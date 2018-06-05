@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place searches</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+      * element that contains the map. */
+      #map {
+        height: 75%;
+      }
+      #salvos{
+        height: 25%;
+        bottom: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <link rel="manifest" href="https://liviamenegaro.github.io/cinema/manifest.json"></link>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="salvos"></div>
+    <script>
+      if (navigator.serviceWorker.controller) {
+        console.log('[PWA Builder] active service worker found, no need to register')
+      } else {
+        navigator.serviceWorker.register('sw.js', {
+          scope: './'
+        }).then(function (reg) {
+          console.log('Service worker has been registered for scope:' + reg.scope);
+        });
+      };
+    </script>
+    <script src="js/handlebars.js"></script>
+    <script src="js/persistencia.js"></script>
+
+    <script id="source" type="text/x-handlebars-template">
+      <div class="entry"></div>
+      {{#cinemas}}
+      <div class="thumbnail">
+        <div class="caption">
+          <h3>{{nome}}</h3>
+          <p>
+           {{endereco}}
+          </p>
+        </div>
+      </div>
+      {{/cinemas}}
+    </script>
+
+    <script>
+      if (Persistencia.existe('cinemas')) {
+        var source   = document.querySelector("#source").innerHTML;
+        var template = Handlebars.compile(source);
+        var html = template({
+          cinemas: Persistencia.carrega('cinemas')
+        });
+        document.querySelector('#salvos').innerHTML = html;
+      }
+    </script>
+
+    <script src="js/mapa.js"> </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmh11hp0kjmGMnioKHH-PiYA7i3xpXoMU&libraries=places&callback=initMap"async defer></script>
+
+  </body>
+</html>
