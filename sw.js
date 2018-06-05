@@ -5,10 +5,13 @@ self.addEventListener('install', function (event) {
       caches.open('pwabuilder-offline').then(function (cache) {
         console.log('[PWA Builder] Cached index page during Install' + response.url);
         return cache.addAll([
-          '/cinema/',
-          '/cinema/index.html',
-          '/cinema/manifest.json',
-          '/cinema/offline.html',
+          '/cinema2/',
+          '/cinema2/index.html',
+          '/cinema2/manifest.json',
+          '/cinema2/offline.html',
+          '/cinema2/js/mapa.js',
+          '/cinema2/js/handlebars.js',
+          '/cinema2/js/persistencia.js
         ]);
       });
     })
