@@ -4,8 +4,8 @@
   "theme_color": "rgba(65,105,225)",
   "background_color": "rgba(30,144,255)",
   "display": "fullscreen",
-  "scope": "/cinema",
-  "start_url": "https://github.com/liviamenegaro/cinema",
+  "scope": "/cinema2",
+  "start_url": "https://github.com/liviamenegaro/cinema2",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
