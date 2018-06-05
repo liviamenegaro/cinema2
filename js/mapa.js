@@ -33,7 +33,7 @@ function initMap() {
         var service = new google.maps.places.PlacesService(map);
         service.nearbySearch({
             location: pos,
-            radius: 5000,
+            radius: 50000,
             type: ['movie_theater']
         }, callback);
         var vetor = [];
