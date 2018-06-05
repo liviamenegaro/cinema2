@@ -11,7 +11,7 @@ self.addEventListener('install', function (event) {
           '/cinema2/offline.html',
           '/cinema2/js/mapa.js',
           '/cinema2/js/handlebars.js',
-          '/cinema2/js/persistencia.js
+          '/cinema2/js/persistencia.js'
         ]);
       });
     })
